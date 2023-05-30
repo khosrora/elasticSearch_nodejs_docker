@@ -3,7 +3,8 @@ const datalist = document.getElementById("blog-result");
 input.addEventListener("keyup", async function() {
     datalist.innerHTML = "";
     const search = this.value;
-    const result = await (await fetch(`http://localhost:3333/blog/findBlogByMultifield?search=${search}`)).json()
+    const result = await (await fetch(`http://localhost:3000/blog/searchMultyByRegex?search=${search}`)).json()
+    console.log(result);
     for (const blog of result) {
         const item = document.createElement("li");
         item.innerHTML = blog._source.title
